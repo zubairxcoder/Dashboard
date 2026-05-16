@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/_/backend/api'
+  baseURL: '/api'
 });
 
 api.interceptors.request.use((config) => {
@@ -14,16 +14,4 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-api.interceptors.response.use(
-  (res) => res,
-  (err) => {
-    if (err.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
-    }
-    return Promise.reject(err);
-  }
-);
-
-// ✅ ONLY ONE EXPORT (IMPORTANT)
 export default api;
