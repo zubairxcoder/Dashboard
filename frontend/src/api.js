@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-// ======================
-// Axios Instance
-// ======================
 const api = axios.create({
-  baseURL: '/api' // ✅ IMPORTANT FIX (Vercel same project backend)
+  baseURL: '/_/backend/api'
 });
+
+export default api;
 
 // ======================
 // Request Interceptor (Attach Token)
